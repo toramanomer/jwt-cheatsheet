@@ -1,6 +1,33 @@
 # JWT Cheatsheet
 
-## Registered Claim Names
+JWTs represent a set of claims as a JSON object that is encoded in JWS and/or JWE structurtes.
+A JWT is represented as a sequence of base64url-encoded values separated by period ('.') characters.
+
+-   If the JWT is a JWS, then there are three parts:
+-   If the JWT is a JWE, then there are five parts:
+
+## JOSE Header
+
+**JOSE Header** is a JSON object that describes the cryptographic operations applied the JWT, and optionally, additional properties of the JWT.
+Depending upon whether the JWT is a JWS or JWE, the corresponding rules for the JOSE Header values apply.
+
+| Header Parameter     | Description                                   |
+| -------------------- | --------------------------------------------- |
+| "typ" (Type)         | the media type of the JWT                     |
+| "cty" (Content Type) | must be JWT with nested signing or encryption |
+
+## JWT Claims
+
+**JWT Claims Set** is a JSON object that is encoded in a JWS and/or JWE structure.
+It can have zero or more name/value pairs (or members).
+
+-   **Claim Names** are the name portion of the members and are always strings. Claim names must be unique.
+-   **Claim Values** are the value portion of the members and can be of any JSON value type.
+
+-   If it is a JWS, then the **JWT Claims Set** is the **payload** of the JWS.
+-   If it is a JWE, then the **JWT Claims Set** is the **plaintext** of the JWE.
+
+### Registered Claim Names
 
 All of them are optional.
 
